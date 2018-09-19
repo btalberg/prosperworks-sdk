@@ -168,6 +168,7 @@ abstract class CRM
             if ($detailed && $resource == 'customFieldDefinition') {
                 array_walk($result, function (&$field) {
                     if (isset($field->options) && $field->options) {
+                        Util::sortBy('rank', $field->options);
                         $field->options = array_column($field->options, 'name', 'id');
                     }
                 });
